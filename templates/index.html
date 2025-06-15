@@ -448,5 +448,71 @@
       });
     });
   </script>
+  <!-- Cookie Banner -->
+<!-- Cookie Banner -->
+<div id="cookie-banner" style="
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #1f2228;
+  color: #ccc;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #2c2f36;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  display: none;
+  z-index: 9999;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+">
+  <div style="margin-bottom: 10px;">
+    Usamos cookies para mejorar tu experiencia.
+    <a href="cookies.html" style="color: #4a90e2; text-decoration: underline;">Más información</a>.
+  </div>
+  <div style="display: flex; gap: 10px;">
+    <button id="accept-cookies" style="
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    ">Aceptar</button>
+    <button id="reject-cookies" style="
+      background-color: #333;
+      color: #aaa;
+      border: 1px solid #555;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    ">Rechazar</button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const banner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('accept-cookies');
+    const rejectBtn = document.getElementById('reject-cookies');
+
+    if (!localStorage.getItem('cookiesChoice')) {
+      banner.style.display = 'block';
+    }
+
+    function setCookiesChoice(choice) {
+      localStorage.setItem('cookiesChoice', choice);
+      banner.style.display = 'none';
+    }
+
+    acceptBtn.addEventListener('click', () => setCookiesChoice('accepted'));
+    rejectBtn.addEventListener('click', () => setCookiesChoice('rejected'));
+  });
+</script>
+
 </body>
 </html>
